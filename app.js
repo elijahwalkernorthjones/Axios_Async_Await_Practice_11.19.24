@@ -81,35 +81,67 @@
 
 // getPokemon()
 
-async function getPoke(){
-    let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
-    console.log(res.data.results[0].name)
-}
+// async function getPoke(){
+//     let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+//     console.log(res.data.results[0].name)
+// }
     
-getPoke()
+// getPoke()
 
 //----------------------------------------
 // you can do async callbacks in PARALLEL... first calling the axios.get in batches, then saying "await" in a batch
 //then console.logging all of the promise responses. 
 //"axios.get, await, then do something with all responses at once"
 
-async function catchSomeOfEmParallel() {
+// async function catchSomeOfEmParallel() {
+//     try {
+//         let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
+
+//         // Use Promise.all to fetch data in parallel
+//         let [p1, p2, p3] = await Promise.all([
+//             axios.get(res.data.results[0].url),
+//             axios.get(res.data.results[1].url),
+//             axios.get(res.data.results[2].url),
+//         ]);
+
+//         console.log(`The first pokemon is ${p1.data.name}`);
+//         console.log(`The second pokemon is ${p2.data.name}`);
+//         console.log(`The third pokemon is ${p3.data.name}`);
+//     } catch (error) {
+//         console.error("Error in catchSomeOfEmParallel:", error.message);
+//     }
+// }
+
+// catchSomeOfEmParallel();
+
+
+//---------------------------------------------
+
+
+// async function getNumFact() {
+//     let res = await axios.get("http://numbersapi.com/42/")
+//     console.log(res.data)
+// }
+
+// getNumFact()
+
+async function getMultipleNumFacts() {
     try {
-        let res = await axios.get(`https://pokeapi.co/api/v2/pokemon/`);
+    
+    const [one, two, three, four] = await Promise.all([
+        axios.get("http://numbersapi.com/1"),
+        axios.get("http://numbersapi.com/2"),
+        axios.get("http://numbersapi.com/3"),
+        axios.get("http://numbersapi.com/4")
+    ])
+    
+    console.log(one.data, two.data, three.data, four.data)
 
-        // Use Promise.all to fetch data in parallel
-        let [p1, p2, p3] = await Promise.all([
-            axios.get(res.data.results[0].url),
-            axios.get(res.data.results[1].url),
-            axios.get(res.data.results[2].url),
-        ]);
-
-        console.log(`The first pokemon is ${p1.data.name}`);
-        console.log(`The second pokemon is ${p2.data.name}`);
-        console.log(`The third pokemon is ${p3.data.name}`);
-    } catch (error) {
-        console.error("Error in catchSomeOfEmParallel:", error.message);
+    } catch (e){
+        console.log("Error!", e.message)
     }
 }
 
-catchSomeOfEmParallel();
+getMultipleNumFacts()
+
+
