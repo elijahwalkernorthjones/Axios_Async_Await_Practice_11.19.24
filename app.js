@@ -125,23 +125,24 @@
 
 // getNumFact()
 
-async function getMultipleNumFacts() {
-    try {
+// async function getMultipleNumFacts() {
+//     try {
     
-    const [one, two, three, four] = await Promise.all([
-        axios.get("http://numbersapi.com/1"),
-        axios.get("http://numbersapi.com/2"),
-        axios.get("http://numbersapi.com/3"),
-        axios.get("http://numbersapi.com/4")
-    ])
+//     const [one, two, three, four] = await Promise.all([
+//         axios.get("http://numbersapi.com/1"),
+//         axios.get("http://numbersapi.com/2"),
+//         axios.get("http://numbersapi.com/3"),
+//         axios.get("http://numbersapi.com/4")
+//     ])
     
-    console.log(one.data, two.data, three.data, four.data)
+//     console.log(one.data, two.data, three.data, four.data)
 
-    } catch (e){
-        console.log("Error!", e.message)
-    }
-}
+//     } catch (e){
+//         console.log("Error!", e.message)
+//     }
+// }
 
-getMultipleNumFacts()
+// getMultipleNumFacts()
 
+//-----------------------------------------------
 
